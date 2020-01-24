@@ -1,18 +1,10 @@
 defmodule Client do
-  @moduledoc """
-  Documentation for Client.
-  """
+  def say_hello(name) do
+    {:ok, channel} = GRPC.Stub.connect("localhost:50051", interceptors: [GRPC.Logger.Client])
 
-  @doc """
-  Hello world.
+    request = Helloworld.HelloRequest.new(name: name)
+    {:ok, reply} = channel |> Helloworld.Greeter.Stub.say_hello(request)
 
-  ## Examples
-
-      iex> Client.hello()
-      :world
-
-  """
-  def hello do
-    :world
+    reply
   end
 end

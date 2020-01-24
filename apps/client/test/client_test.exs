@@ -2,7 +2,7 @@ defmodule ClientTest do
   use ExUnit.Case
   doctest Client
 
-  test "greets the world" do
-    assert Client.hello() == :world
+  test "say_hello" do
+    assert Client.say_hello("Dunya") == :world
   end
 end
