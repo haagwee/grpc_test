@@ -16,6 +16,8 @@ defmodule GrpcTest.MixProject do
   #
   # Run "mix help deps" for examples and options.
   defp deps do
-    []
+    [
+      {:protobuf, "~> 0.7.1"}
+    ]
   end
 end
