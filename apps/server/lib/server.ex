@@ -1,18 +1,8 @@
-defmodule Server do
-  @moduledoc """
-  Documentation for Server.
-  """
+defmodule Helloworld.Greeter.Server do
+  use GRPC.Server, service: Helloworld.Greeter.Service
 
-  @doc """
-  Hello world.
-
-  ## Examples
-
-      iex> Server.hello()
-      :world
-
-  """
-  def hello do
-    :world
+  @spec say_hello(Helloworld.HelloRequest.t(), GRPC.Server.Stream.t()) :: Helloworld.HelloReply.t()
+  def say_hello(request, _stream) do
+    Helloworld.HelloReply.new(message: "Hello #{request.name}")
   end
 end
